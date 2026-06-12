@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
+import Image from 'next/image';
 import Magnetic from './Magnetic';
 
 export default function Hero() {
@@ -43,6 +44,11 @@ export default function Hero() {
       { clipPath: 'inset(100% 0 0 0)', scale: 1.1 },
       { clipPath: 'inset(0% 0 0 0)', scale: 1, duration: 2, ease: "power4.inOut" },
       "-=1.5"
+    )
+    .fromTo(".progress-fill",
+      { scaleX: 0 },
+      { scaleX: 0.5, duration: 2, ease: "power2.out", transformOrigin: "left" },
+      "-=1"
     );
 
   }, []);
@@ -92,10 +98,21 @@ export default function Hero() {
             <div className="absolute top-0 left-0 w-full h-[1px] bg-border-light tech-line origin-left" />
             
             <div className="max-w-lg">
-              <div className="font-mono text-xs text-text-400 mb-4 tracking-widest uppercase">Role / Identity</div>
+              <h2 className="font-mono text-xs text-text-400 mb-4 tracking-widest uppercase">Odoo Techno-Functional Developer</h2>
               <p className="text-text-200 font-light leading-relaxed text-sm md:text-base">
-                Odoo Techno-Functional Executive with 2+ years of hands-on experience across Odoo 15–19, bridging functional ERP operations with deep technical execution — from server infrastructure &amp; data migrations to LLM integration &amp; cross-platform development.
+                Odoo Techno-Functional Developer with 2+ years of hands-on experience, with knowledge spanning from the legacy Tiny ERP to modern Odoo 19, bridging functional ERP operations with deep technical execution — from server infrastructure &amp; data migrations to LLM integration &amp; cross-platform development.
               </p>
+              
+              {/* Progress Bar Animation */}
+              <div className="mt-8 flex flex-col gap-2 font-mono text-[10px] text-text-400 tracking-[0.2em] uppercase hero-meta max-w-[240px]">
+                <div className="flex justify-between items-center">
+                  <span>GROWTH_INDEX</span>
+                  <span>LVL 3.5 OF 7 LEVELS</span>
+                </div>
+                <div className="w-full h-[2px] bg-border-light relative overflow-hidden">
+                  <div className="absolute top-0 left-0 h-full w-full bg-text-200 progress-fill origin-left" />
+                </div>
+              </div>
             </div>
             
             <div className="flex gap-4">
@@ -118,11 +135,13 @@ export default function Hero() {
         style={{ y: yImage }}
       >
         <div className="relative w-full h-full border-l border-border-light">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
+          <Image 
             src="/images/hero.jpg" 
             alt="Ameen Noushad" 
-            className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-50"
+            fill
+            sizes="(max-width: 768px) 80vw, 50vw"
+            priority
+            className="object-cover grayscale mix-blend-luminosity opacity-50"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-bg-base via-bg-base/50 to-transparent w-[50%]" />
           <div className="absolute inset-0 bg-gradient-to-t from-bg-base via-transparent to-transparent h-full" />

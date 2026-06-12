@@ -47,9 +47,11 @@ const skillCategories = [
       "JavaScript",
       "HTML5",
       "CSS3",
+      "Tailwind CSS",
       "Supabase",
       "MongoDB",
-      "Postman"
+      "Postman",
+      "Blender (basics)"
     ]
   },
   {
@@ -78,6 +80,18 @@ const skillCategories = [
       "Grok",
       "Perplexity",
       "NotebookLM"
+    ]
+  },
+  {
+    title: "Data Science & ML",
+    skills: [
+      "Python (Data)",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "ML Fundamentals",
+      "Data Analysis",
+      "Jupyter Notebook"
     ]
   }
 ];

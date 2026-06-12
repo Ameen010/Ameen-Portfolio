@@ -42,6 +42,13 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
           <h3 className="heading-display text-4xl md:text-5xl lg:text-6xl text-text-200 group-hover:text-text-100 transition-colors duration-500">
             {project.title}
           </h3>
+          
+          {/* Image Placeholder - Ready for when project thumbnails are added */}
+          {/* <div className="mt-8 w-full max-w-2xl h-64 md:h-96 bg-bg-base border border-border-light relative overflow-hidden group-hover:border-text-400 transition-colors duration-500">
+            <div className="absolute inset-0 flex items-center justify-center font-mono text-xs text-text-400 tracking-widest uppercase opacity-50">
+              [Image Placeholder / PRJ_THUMBNAIL]
+            </div>
+          </div> */}
         </div>
         
         <div className="flex flex-col items-start md:items-end mt-6 md:mt-0 font-mono text-xs tracking-widest uppercase text-text-400 gap-2">

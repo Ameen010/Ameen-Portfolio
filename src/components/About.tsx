@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,7 +58,7 @@ export default function About() {
 
           <div className="text-lg text-text-300 font-light leading-relaxed space-y-8 max-w-2xl">
             <p className="about-reveal">
-              With <strong className="text-text-100 font-normal">2+ years as an Odoo Techno-Functional Executive</strong>, I operate across the full spectrum of ERP — from functional module configuration across <strong className="text-text-100 font-normal">Odoo 15 through 19</strong> (Sales, Inventory, Accounting, Manufacturing, HR, and more) to deep technical customization, backend development, and server-level infrastructure management.
+              With <strong className="text-text-100 font-normal">2+ years as an Odoo Techno-Functional Developer</strong>, I operate across the full spectrum of ERP — from functional module configuration with knowledge spanning from the legacy <strong className="text-text-100 font-normal">Tiny ERP to modern Odoo 19</strong> (Sales, Inventory, Accounting, Manufacturing, HR, and more) to deep technical customization, backend development, and server-level infrastructure management.
             </p>
             <p className="about-reveal">
               On the technical side, I work hands-on with <strong className="text-text-100 font-normal">Ubuntu, Docker, Nginx, PostgreSQL</strong>, and cloud platforms like <strong className="text-text-100 font-normal">Digital Ocean</strong> — handling DNS configurations, server deployments, data migrations, and GitHub-based CI/CD workflows. My toolkit extends to <strong className="text-text-100 font-normal">networking fundamentals</strong> including IP testing, router configuration, and biometric integrations.
@@ -68,7 +69,7 @@ export default function About() {
           </div>
 
           <div className="flex flex-wrap gap-4 pt-4 about-reveal">
-            {['Odoo 15–19', 'ERP Automations', 'Server Infrastructure', 'Data Migration', 'Docker & Ubuntu', 'LLM Integration', 'Networking', 'Flutter Apps', 'Web Development', 'Digital Ocean'].map((skill) => (
+            {['Tiny ERP to Odoo 19', 'ERP Automations', 'Server Infrastructure', 'Data Migration', 'Docker & Ubuntu', 'LLM Integration', 'Networking', 'Flutter Apps', 'Web Development', 'Digital Ocean'].map((skill) => (
               <div key={skill} className="px-6 py-3 border border-border-light text-text-300 text-xs tracking-widest uppercase font-mono">
                 {skill}
               </div>
@@ -83,11 +84,12 @@ export default function About() {
               className="w-full h-[130%] absolute -top-[15%] left-0"
               style={{ y: imgY }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
+              <Image 
                 src="/images/about.jpg" 
                 alt="Ameen Noushad" 
-                className="w-full h-full object-cover filter grayscale contrast-125 brightness-90"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover filter grayscale contrast-125 brightness-90"
               />
             </motion.div>
             

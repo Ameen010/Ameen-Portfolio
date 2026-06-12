@@ -5,47 +5,92 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const experiences = [
   {
-    role: "Odoo Techno-Functional Executive",
-    company: "Orgvein Pvt Ltd",
-    period: "2024 — Present",
-    id: "EXP_01",
-    points: [
-      "Functional mastery across Odoo 15–19: Configured and optimized all core modules (Sales, CRM, Inventory, Accounting, Manufacturing, HR, Purchase, Website) for company operations and client deployments.",
-      "Technical infrastructure: Managed Ubuntu-based server environments with Docker, Nginx, and PostgreSQL — handling DNS platforms, Digital Ocean deployments, and GitHub-based CI/CD pipelines.",
-      "Data migrations & database operations: Executed complex data migrations between Odoo versions and external systems using PostgreSQL, CSV/Excel imports, and custom Python scripts.",
-      "Networking & integrations: Configured IP testing, router setups, biometric device integrations, and server-level connectivity for enterprise clients.",
-      "AI & LLM integration: Applied local LLMs (Ollama, LLaMA, OpenClaw) and public AI platforms (Gemini, Claude, GPT-4) for workflow automation and intelligent process optimization.",
-      "Backend customization: Developed custom Odoo modules, server actions, automated workflows, and scheduled cron jobs to streamline business operations across Community and Enterprise editions."
-    ]
-  },
-  {
-    role: "Cross-Platform Flutter Developer",
-    company: "Freelance & App Consulting",
-    period: "2024 — 2025",
-    id: "EXP_02",
-    points: [
-      "Designed and engineered fluid cross-platform mobile applications for Android and iOS using Flutter and Dart.",
-      "Implemented highly responsive UIs, clean state management (BLoC/Provider), and robust REST API integrations."
-    ]
-  },
-  {
-    role: "Odoo Developer",
-    company: "Akira Software and Solutions",
-    period: "2024 — 2025",
-    id: "EXP_03",
-    points: [
-      "Developed custom Odoo modules and tailored existing modules to build client-specific ERP automations across Odoo Community and Enterprise workflows.",
-      "Handled full-cycle client implementations including data migration pipelines, PostgreSQL database management, import/export operations, and server performance optimization."
-    ]
-  },
-  {
-    role: "Python Full Stack Developer",
-    company: "Networks System Technology",
+    role: "Level 01 / Web Foundation",
+    company: "Python Full-Stack Developer",
     period: "2023 — 2024",
-    id: "EXP_04",
+    id: "LVL_01",
+    status: "STATUS: ACHIEVED",
     points: [
-      "Built and deployed scalable web applications using Python web frameworks and modern frontend JavaScript architectures.",
-      "Designed secure, performant RESTful APIs and optimized complex PostgreSQL database schemas."
+      "Started with the core of coding — Python as the first serious language. Built real, production-grade websites from scratch with hands-on manual coding.",
+      "Learned how a professional web product actually comes together — REST APIs, PostgreSQL schemas, frontend-backend architecture.",
+      "This small portfolio itself? A live demo of Level 01 power. The big-bucket data websites? That confidence is built right here.",
+      "Skills: Python, Django, PostgreSQL, REST APIs, HTML5, CSS3, JavaScript"
+    ]
+  },
+  {
+    role: "Level 02 / AI & Intelligence Layer",
+    company: "AI Integration Specialist",
+    period: "2024 — Present",
+    id: "LVL_02",
+    status: "STATUS: ACHIEVED",
+    points: [
+      "This is where everything accelerated. Learned how to use AI not just as a tool but as a skill multiplier — integrating LLMs into workflows, automating intelligent processes, prompt engineering for real outputs.",
+      "Running local models on servers (Ollama, LLaMA, OpenClaw) and working with every major AI platform (Claude, Gemini, GPT-4, Grok, Perplexity, NotebookLM).",
+      "AI isn't the future here — it's the present workflow.",
+      "Skills: LLM Integration, Prompt Engineering, AI Workflows, Ollama, LLaMA, OpenClaw, Claude, Gemini, GPT-4, Grok, Perplexity, NotebookLM"
+    ]
+  },
+  {
+    role: "Level 03 / ERP Mastery",
+    company: "Odoo Techno-Functional Executive",
+    period: "2024 — Present",
+    id: "LVL_03",
+    status: "STATUS: ACHIEVED",
+    points: [
+      "Odoo from Tiny ERP to the current version — fully customized, configured, and deployed. This isn't just using ERP software; it's building ERP ecosystems from scratch for real businesses.",
+      "Sales, CRM, Inventory, Accounting, Manufacturing, HR — all modules, simple to complex. Built complete ERPs for multiple companies.",
+      "With AI assistance and the right workflows, a full community-friendly ERP takes maximum 4 months. That's the Level 03 power.",
+      "Skills: Odoo 15–19, Module Customization, ERP Automations, Python, XML, PostgreSQL, Data Migration, Frappe"
+    ]
+  },
+  {
+    role: "Level 04 / Server Infrastructure",
+    company: "Server & Infrastructure Engineer",
+    period: "2024 — Present",
+    id: "LVL_04",
+    status: "STATUS: ACHIEVED",
+    points: [
+      "ERPs need homes. Servers need maintenance. This level is about owning the infrastructure layer — Ubuntu environments, Docker containers, Nginx configs, Digital Ocean deployments, DNS platforms, GitHub CI/CD pipelines.",
+      "Full server ops from SSH access to cron automation. Built for clients who need their ERP handed over clean and running.",
+      "With AI adaptation, server handover becomes smooth and straightforward.",
+      "Skills: Ubuntu, Docker, Nginx, Digital Ocean, DNS Platforms, GitHub CI/CD, SSH & Server Ops, Jenkins, Git & Version Control, Cron & Automation"
+    ]
+  },
+  {
+    role: "Level 05 / Cross-Platform Development",
+    company: "Flutter & Full-Stack Developer",
+    period: "2024 — 2025",
+    id: "LVL_05",
+    status: "STATUS: ACHIEVED",
+    points: [
+      "Apps for Android and iPhone — fluid, clean, production-grade. Flutter and Dart for cross-platform mobile, plus the full modern web stack.",
+      "This level is about building user-facing products that actually work in the real world — responsive UIs, state management, REST integrations, modern frameworks.",
+      "Skills: Flutter, Dart, Next.js, React, Django, Node.js, TypeScript, JavaScript, Tailwind CSS, Supabase, MongoDB, Blender (basics)"
+    ]
+  },
+  {
+    role: "Level 06 / IT Administration",
+    company: "IT Administrator / IT Manager Track",
+    period: "Currently Studying — Target 2026",
+    id: "LVL_06",
+    status: "STATUS: ACTIVE_LEARNING",
+    points: [
+      "Growing into the IT Consultant identity. This level covers the full IT Admin and IT Manager skill set — networking, hardware, VPN, server rack management.",
+      "The goal isn't just a job title; it's becoming the person any company or entrepreneur calls when they need an IT consultant for any field.",
+      "7 months to completion — 7 is the achievement number.",
+      "Skills: IP Testing, Router Config, Biometric Integration, Server Rack Mgmt, Network Debugging, VPN & Tunneling"
+    ]
+  },
+  {
+    role: "Level 07 / Cybersecurity",
+    company: "Cybersecurity & Ethical Hacking",
+    period: "Planning Phase",
+    id: "LVL_07",
+    status: "STATUS: QUEUED",
+    points: [
+      "The seventh level. Cybersecurity and ethical hacking — specifically focused on the IT and ERP field. Protecting the systems I build.",
+      "The number 7 is significant — born 07/05/2005, and the seventh achievement is already in the plan. This level completes the full-stack IT consultant vision.",
+      "Skills: Ethical Hacking, Penetration Testing, Network Security, ERP Security, Vulnerability Assessment"
     ]
   }
 ];
@@ -126,6 +171,15 @@ export default function Experience() {
                 <span className="font-mono text-xs text-text-400 tracking-widest uppercase border border-border-light px-4 py-2">
                   {exp.period}
                 </span>
+                {exp.status && (
+                  <span className={`mt-4 font-mono text-[10px] tracking-widest uppercase px-3 py-1 ${
+                    exp.status.includes('ACHIEVED') ? 'text-accent-cyan border border-accent-cyan/30 bg-accent-cyan/10' :
+                    exp.status.includes('ACTIVE_LEARNING') ? 'text-text-200 border border-text-200/30 bg-text-200/10' :
+                    'text-text-400 border border-text-400/30 bg-text-400/10'
+                  }`}>
+                    {exp.status}
+                  </span>
+                )}
               </div>
             </div>
           ))}
