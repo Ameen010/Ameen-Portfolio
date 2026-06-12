@@ -123,7 +123,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section ref={containerRef} className="w-full py-48 bg-bg-surface relative z-20 border-t border-border-light">
+    <section id="capabilities" ref={containerRef} className="w-full py-48 bg-bg-surface relative z-20 border-t border-border-light">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
         
         <div className="col-span-1 md:col-span-3">

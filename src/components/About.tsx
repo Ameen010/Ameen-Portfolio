@@ -41,7 +41,7 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full py-48 bg-bg-surface z-20">
+    <section id="philosophy" ref={containerRef} className="relative w-full py-48 bg-bg-surface z-20">
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
         
         {/* Left Side: Empty space / minimal layout element for strict grid adherence */}

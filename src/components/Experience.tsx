@@ -122,7 +122,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section className="w-full py-48 bg-bg-base relative z-20 border-t border-border-light">
+    <section id="experience" className="w-full py-48 bg-bg-base relative z-20 border-t border-border-light">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.015]" 
            style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />

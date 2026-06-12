@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Contact() {
   return (
-    <section className="w-full min-h-screen bg-bg-base relative flex flex-col justify-between overflow-hidden z-20 border-t border-border-light pt-48">
+    <section id="transmission" className="w-full min-h-screen bg-bg-base relative flex flex-col justify-between overflow-hidden z-20 border-t border-border-light pt-48">
       
       {/* Engineered Background */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]" 
