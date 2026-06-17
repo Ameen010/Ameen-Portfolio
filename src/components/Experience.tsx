@@ -1,190 +1,121 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const experiences = [
-  {
-    role: "Level 01 / Web Foundation",
-    company: "Python Full-Stack Developer",
-    period: "2023 — 2024",
-    id: "LVL_01",
-    status: "STATUS: ACHIEVED",
-    points: [
-      "Started with the core of coding — Python as the first serious language. Built real, production-grade websites from scratch with hands-on manual coding.",
-      "Learned how a professional web product actually comes together — REST APIs, PostgreSQL schemas, frontend-backend architecture.",
-      "This small portfolio itself? A live demo of Level 01 power. The big-bucket data websites? That confidence is built right here.",
-      "Skills: Python, Django, PostgreSQL, REST APIs, HTML5, CSS3, JavaScript"
-    ]
-  },
-  {
-    role: "Level 02 / AI & Intelligence Layer",
-    company: "AI Integration Specialist",
-    period: "2024 — Present",
-    id: "LVL_02",
-    status: "STATUS: ACHIEVED",
-    points: [
-      "This is where everything accelerated. Learned how to use AI not just as a tool but as a skill multiplier — integrating LLMs into workflows, automating intelligent processes, prompt engineering for real outputs.",
-      "Running local models on servers (Ollama, LLaMA, OpenClaw) and working with every major AI platform (Claude, Gemini, GPT-4, Grok, Perplexity, NotebookLM).",
-      "AI isn't the future here — it's the present workflow.",
-      "Skills: LLM Integration, Prompt Engineering, AI Workflows, Ollama, LLaMA, OpenClaw, Claude, Gemini, GPT-4, Grok, Perplexity, NotebookLM"
-    ]
-  },
-  {
-    role: "Level 03 / ERP Mastery",
-    company: "Odoo Techno-Functional Executive",
-    period: "2024 — Present",
-    id: "LVL_03",
-    status: "STATUS: ACHIEVED",
-    points: [
-      "Odoo from Tiny ERP to the current version — fully customized, configured, and deployed. This isn't just using ERP software; it's building ERP ecosystems from scratch for real businesses.",
-      "Sales, CRM, Inventory, Accounting, Manufacturing, HR — all modules, simple to complex. Built complete ERPs for multiple companies.",
-      "With AI assistance and the right workflows, a full community-friendly ERP takes maximum 4 months. That's the Level 03 power.",
-      "Skills: Odoo 15–19, Module Customization, ERP Automations, Python, XML, PostgreSQL, Data Migration, Frappe"
-    ]
-  },
-  {
-    role: "Level 04 / Server Infrastructure",
-    company: "Server & Infrastructure Engineer",
-    period: "2024 — Present",
-    id: "LVL_04",
-    status: "STATUS: ACHIEVED",
-    points: [
-      "ERPs need homes. Servers need maintenance. This level is about owning the infrastructure layer — Ubuntu environments, Docker containers, Nginx configs, Digital Ocean deployments, DNS platforms, GitHub CI/CD pipelines.",
-      "Full server ops from SSH access to cron automation. Built for clients who need their ERP handed over clean and running.",
-      "With AI adaptation, server handover becomes smooth and straightforward.",
-      "Skills: Ubuntu, Docker, Nginx, Digital Ocean, DNS Platforms, GitHub CI/CD, SSH & Server Ops, Jenkins, Git & Version Control, Cron & Automation"
-    ]
-  },
-  {
-    role: "Level 05 / Cross-Platform Development",
-    company: "Flutter & Full-Stack Developer",
-    period: "2024 — 2025",
-    id: "LVL_05",
-    status: "STATUS: ACHIEVED",
-    points: [
-      "Apps for Android and iPhone — fluid, clean, production-grade. Flutter and Dart for cross-platform mobile, plus the full modern web stack.",
-      "This level is about building user-facing products that actually work in the real world — responsive UIs, state management, REST integrations, modern frameworks.",
-      "Skills: Flutter, Dart, Next.js, React, Django, Node.js, TypeScript, JavaScript, Tailwind CSS, Supabase, MongoDB, Blender (basics)"
-    ]
-  },
-  {
-    role: "Level 06 / IT Administration",
-    company: "IT Administrator / IT Manager Track",
-    period: "Currently Studying — Target 2026",
-    id: "LVL_06",
-    status: "STATUS: ACTIVE_LEARNING",
-    points: [
-      "Growing into the IT Consultant identity. This level covers the full IT Admin and IT Manager skill set — networking, hardware, VPN, server rack management.",
-      "The goal isn't just a job title; it's becoming the person any company or entrepreneur calls when they need an IT consultant for any field.",
-      "7 months to completion — 7 is the achievement number.",
-      "Skills: IP Testing, Router Config, Biometric Integration, Server Rack Mgmt, Network Debugging, VPN & Tunneling"
-    ]
-  },
-  {
-    role: "Level 07 / Cybersecurity",
-    company: "Cybersecurity & Ethical Hacking",
-    period: "Planning Phase",
-    id: "LVL_07",
-    status: "STATUS: QUEUED",
-    points: [
-      "The seventh level. Cybersecurity and ethical hacking — specifically focused on the IT and ERP field. Protecting the systems I build.",
-      "The number 7 is significant — born 07/05/2005, and the seventh achievement is already in the plan. This level completes the full-stack IT consultant vision.",
-      "Skills: Ethical Hacking, Penetration Testing, Network Security, ERP Security, Vulnerability Assessment"
-    ]
-  }
+  { id: 'LVL_01', role: 'Web Foundation', company: 'Python Full-Stack Developer', period: '2023 — 2024', status: 'ACHIEVED', points: ['Built production-grade websites from scratch with Python, Django, and REST APIs.','Learned how a professional web product comes together — PostgreSQL schemas, frontend-backend architecture.','Skills: Python, Django, PostgreSQL, REST APIs, HTML5, CSS3, JavaScript'] },
+  { id: 'LVL_02', role: 'AI & Intelligence Layer', company: 'AI Integration Specialist', period: '2024 — Present', status: 'ACHIEVED', points: ['Integrated LLMs into real workflows — prompt engineering for actual production outputs.','Running local models (Ollama, LLaMA, OpenClaw) and every major AI platform.','Skills: LLM Integration, Prompt Engineering, AI Workflows, Ollama, Claude, Gemini, GPT-4'] },
+  { id: 'LVL_03', role: 'ERP Mastery', company: 'Odoo Techno-Functional Executive', period: '2024 — Present', status: 'ACHIEVED', points: ['Odoo from Tiny ERP to current version — fully customized, configured, deployed.','Sales, CRM, Inventory, Accounting, Manufacturing, HR — all modules built for real businesses.','Skills: Odoo 15–19, Module Customization, ERP Automations, Python, XML, PostgreSQL, Data Migration'] },
+  { id: 'LVL_04', role: 'Server Infrastructure', company: 'Server & Infrastructure Engineer', period: '2024 — Present', status: 'ACHIEVED', points: ['Ubuntu environments, Docker containers, Nginx configs, Digital Ocean, DNS, GitHub CI/CD.','Full server ops from SSH access to cron automation.','Skills: Ubuntu, Docker, Nginx, Digital Ocean, DNS, GitHub CI/CD, SSH, Jenkins, Git'] },
+  { id: 'LVL_05', role: 'Cross-Platform Dev', company: 'Flutter & Full-Stack Developer', period: '2024 — 2025', status: 'ACHIEVED', points: ['Android and iPhone apps — fluid, clean, production-grade with Flutter and Dart.','Responsive UIs, state management, REST integrations.','Skills: Flutter, Dart, Next.js, React, Django, TypeScript, Tailwind CSS, Supabase, MongoDB'] },
+  { id: 'LVL_06', role: 'IT Administration', company: 'IT Administrator / IT Manager Track', period: 'Target 2026', status: 'ACTIVE_LEARNING', points: ['Growing into the IT Consultant identity — networking, hardware, VPN, server rack management.','The goal: the person any company calls for any IT consulting need.','Skills: IP Testing, Router Config, Biometric Integration, Server Rack Mgmt, VPN & Tunneling'] },
+  { id: 'LVL_07', role: 'Cybersecurity', company: 'Cybersecurity & Ethical Hacking', period: 'Planning Phase', status: 'QUEUED', points: ['Ethical hacking focused on the IT and ERP field — protecting the systems I build.','The seventh level completes the full-stack IT consultant vision.','Skills: Ethical Hacking, Penetration Testing, Network Security, ERP Security'] },
 ];
+
+const statusStyle: Record<string, string> = {
+  ACHIEVED:       'text-accent-cyan border-accent-cyan/30 bg-accent-cyan/10',
+  ACTIVE_LEARNING:'text-text-200 border-text-200/30 bg-text-200/10',
+  QUEUED:         'text-text-400 border-text-400/30 bg-text-400/10',
+};
 
 export default function Experience() {
   const listRef = useRef<HTMLDivElement>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return;
     const items = listRef.current?.querySelectorAll('.exp-item');
-    if (items) {
-      items.forEach((item) => {
-        gsap.fromTo(item,
-          { opacity: 0, x: -20 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 85%",
-            }
-          }
-        );
-      });
-    }
+    items?.forEach((item) => {
+      gsap.fromTo(item, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 1, ease: "power2.out", scrollTrigger: { trigger: item, start: "top 85%" } });
+    });
   }, []);
 
+  const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
+
   return (
-    <section id="experience" className="w-full py-48 bg-bg-base relative z-20 border-t border-border-light">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.015]" 
-           style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+    <section id="experience" className="snap-section relative w-full bg-bg-base z-20 border-t border-border-light flex flex-col" style={{ minHeight: '100svh' }}>
+      <div className="absolute inset-0 pointer-events-none opacity-[0.015] hidden md:block"
+        style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start relative z-10">
-        
-        <div className="col-span-1 md:col-span-3">
-          <span className="section-caption sticky top-32">Experience</span>
-          <div className="hidden md:block w-[1px] h-32 bg-border-light absolute left-[12%] top-48" />
+      {/* ── MOBILE accordion ── */}
+      <div className="md:hidden flex flex-col w-full h-full overflow-y-auto">
+        <div className="px-5 pt-8 pb-4 flex items-center justify-between">
+          <span className="section-caption">Experience</span>
+          <span className="font-mono text-[9px] text-text-400 tracking-widest">TAP TO EXPAND</span>
         </div>
+        <div className="flex flex-col divide-y divide-border-light">
+          {experiences.map((exp) => {
+            const isOpen = openId === exp.id;
+            return (
+              <div key={exp.id} className="flex flex-col">
+                <button
+                  onClick={() => toggle(exp.id)}
+                  className="flex items-center justify-between px-5 py-4 text-left w-full group"
+                >
+                  <div className="flex flex-col gap-1 flex-1 min-w-0">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-[9px] text-text-400 tracking-[0.2em]">{exp.id}</span>
+                      <span className={`font-mono text-[8px] tracking-widest uppercase px-2 py-0.5 border ${statusStyle[exp.status]}`}>{exp.status}</span>
+                    </div>
+                    <span className="text-text-100 text-sm font-light heading-display truncate">{exp.role}</span>
+                  </div>
+                  <span className="font-mono text-accent-cyan text-xs ml-3 flex-shrink-0 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>+</span>
+                </button>
 
-        <div ref={listRef} className="col-span-1 md:col-span-9 flex flex-col border-l border-border-light pl-0 md:pl-12">
-          {experiences.map((exp, index) => (
-            <div 
-              key={index} 
-              className={`exp-item group flex flex-col lg:flex-row justify-between py-16 relative ${index !== 0 ? 'border-t border-border-light' : ''}`}
-            >
-              {/* Technical Marker */}
-              <div className="absolute -left-[53px] top-20 w-3 h-3 border border-border-light bg-bg-base hidden md:block group-hover:bg-text-100 transition-colors duration-500" />
-              
-              <div className="flex-1 pr-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="font-mono text-[10px] text-text-400 tracking-[0.2em]">{exp.id}</span>
-                  <div className="h-[1px] w-12 bg-border-light" />
-                </div>
-                
-                <h3 className="text-3xl md:text-4xl font-normal text-text-100 mb-2 heading-display group-hover:translate-x-4 transition-transform duration-500">
-                  {exp.role}
-                </h3>
-                <div className="text-xl text-text-300 font-light mb-8 flex items-center gap-4">
-                  {exp.company}
-                  <span className="inline-block w-2 h-2 rounded-full bg-accent-cyan opacity-50" />
-                </div>
-                
-                <div className="space-y-4 border-l border-border-light pl-6 relative">
-                  <div className="absolute top-0 left-0 w-[2px] h-0 bg-text-400 group-hover:h-full transition-all duration-700" />
-                  {exp.points.map((point, i) => (
-                    <p key={i} className="text-text-300 text-sm font-light max-w-xl leading-relaxed">
-                      {point}
-                    </p>
-                  ))}
+                {/* Expandable content */}
+                <div
+                  className="overflow-hidden transition-all duration-500 ease-in-out"
+                  style={{ maxHeight: isOpen ? '500px' : '0px', opacity: isOpen ? 1 : 0 }}
+                >
+                  <div className="px-5 pb-6 flex flex-col gap-3 border-l-2 border-accent-cyan/30 ml-5">
+                    <p className="font-mono text-[10px] text-text-400 tracking-widest uppercase">{exp.company} · {exp.period}</p>
+                    {exp.points.map((pt, i) => (
+                      <p key={i} className="text-text-300 text-xs leading-relaxed font-light">{pt}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
-              
-              <div className="mt-8 lg:mt-0 lg:text-right flex flex-col items-start lg:items-end justify-start">
-                <span className="font-mono text-xs text-text-400 tracking-widest uppercase border border-border-light px-4 py-2">
-                  {exp.period}
-                </span>
-                {exp.status && (
-                  <span className={`mt-4 font-mono text-[10px] tracking-widest uppercase px-3 py-1 ${
-                    exp.status.includes('ACHIEVED') ? 'text-accent-cyan border border-accent-cyan/30 bg-accent-cyan/10' :
-                    exp.status.includes('ACTIVE_LEARNING') ? 'text-text-200 border border-text-200/30 bg-text-200/10' :
-                    'text-text-400 border border-text-400/30 bg-text-400/10'
-                  }`}>
-                    {exp.status}
-                  </span>
-                )}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+      </div>
 
+      {/* ── DESKTOP list ── */}
+      <div className="hidden md:block w-full py-48 relative z-10">
+        <div className="max-w-[1600px] mx-auto px-12 w-full grid grid-cols-12 gap-8 items-start">
+          <div className="col-span-3">
+            <span className="section-caption sticky top-32">Experience</span>
+          </div>
+          <div ref={listRef} className="col-span-9 flex flex-col border-l border-border-light pl-12">
+            {experiences.map((exp, index) => (
+              <div key={index} className={`exp-item group flex flex-col lg:flex-row justify-between py-16 relative ${index !== 0 ? 'border-t border-border-light' : ''}`}>
+                <div className="absolute -left-[53px] top-20 w-3 h-3 border border-border-light bg-bg-base group-hover:bg-text-100 transition-colors duration-500 hidden md:block" />
+                <div className="flex-1 pr-8">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="font-mono text-[10px] text-text-400 tracking-[0.2em]">{exp.id}</span>
+                    <div className="h-[1px] w-12 bg-border-light" />
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-normal text-text-100 mb-2 heading-display group-hover:translate-x-4 transition-transform duration-500">{exp.role}</h3>
+                  <div className="text-xl text-text-300 font-light mb-8 flex items-center gap-4">
+                    {exp.company}<span className="inline-block w-2 h-2 rounded-full bg-accent-cyan opacity-50" />
+                  </div>
+                  <div className="space-y-4 border-l border-border-light pl-6 relative">
+                    <div className="absolute top-0 left-0 w-[2px] h-0 bg-text-400 group-hover:h-full transition-all duration-700" />
+                    {exp.points.map((pt, i) => (
+                      <p key={i} className="text-text-300 text-sm font-light max-w-xl leading-relaxed">{pt}</p>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-8 lg:mt-0 lg:text-right flex flex-col items-start lg:items-end justify-start">
+                  <span className="font-mono text-xs text-text-400 tracking-widest uppercase border border-border-light px-4 py-2">{exp.period}</span>
+                  <span className={`mt-4 font-mono text-[10px] tracking-widest uppercase px-3 py-1 border ${statusStyle[exp.status]}`}>STATUS: {exp.status}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

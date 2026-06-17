@@ -211,3 +211,37 @@
 .btn-premium:hover::before {
   height: 100%;
 }
+
+/* ─── Mobile scroll-snap: each section is a full screen "page" ─── */
+@media (max-width: 767px) {
+  /* Restore system cursor on touch screens */
+  body {
+    cursor: auto;
+  }
+  body::after {
+    display: none; /* hide grain on mobile for perf */
+  }
+
+  /* Each section snaps to the viewport */
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  /* Hide custom cursor elements on mobile */
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ─── Utility: hide scrollbar on the snap container ─── */
+.snap-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.snap-container::-webkit-scrollbar {
+  display: none;
+}
