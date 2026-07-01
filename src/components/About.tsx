@@ -33,9 +33,9 @@ export default function About() {
       {/* ── MOBILE ── */}
       <div className="md:hidden w-full px-5 py-12 flex flex-col gap-8 overflow-y-auto max-h-[100svh]">
         <span className="section-caption">Philosophy</span>
-        <h2 className="heading-display text-4xl text-text-100 leading-tight">
+        <p className="heading-display text-4xl text-text-100 leading-tight">
           Bridging business logic <br /><span className="text-text-400">with technical precision.</span>
-        </h2>
+        </p>
         <div className="flex flex-col gap-3">
           {principles.map((p) => (
             <div key={p.id} className="flex gap-4 p-4 border border-border-light bg-bg-elevated/40">

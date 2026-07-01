@@ -19,9 +19,9 @@ export default function Contact() {
       <div className="md:hidden flex flex-col flex-1 overflow-y-auto px-5 py-8 gap-8 relative z-10">
         <span className="section-caption">Transmission</span>
 
-        <h2 className="heading-display text-5xl text-text-100 uppercase leading-[0.9]">
+        <p className="heading-display text-5xl text-text-100 uppercase leading-[0.9]">
           Initiate <br /><span className="text-text-400">Sequence.</span>
-        </h2>
+        </p>
 
         {/* Primary contact */}
         <div className="flex flex-col gap-4 pt-4 border-t border-border-light">
@@ -75,7 +75,7 @@ export default function Contact() {
                 <div className="group">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-2 h-2 bg-text-400 group-hover:bg-accent-cyan transition-colors" />
-                    <h4 className="text-[10px] font-mono text-text-400 uppercase tracking-[0.2em]">Primary Comms</h4>
+                    <p className="text-[10px] font-mono text-text-400 uppercase tracking-[0.2em]">Primary Comms</p>
                   </div>
                   <a href="mailto:ameenkido5412@gmail.com" className="text-2xl md:text-3xl font-light text-text-200 hover:text-text-100 transition-colors block hover-target">
                     Hi Get in Touch Mail Mee.... <span className="inline-block transition-transform duration-300 group-hover:scale-125 group-hover:-translate-y-1"><span className="group-hover:hidden">🙂</span><span className="hidden group-hover:inline">😁</span></span>
@@ -84,7 +84,7 @@ export default function Contact() {
                 <div className="group">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-2 h-2 bg-text-400 group-hover:bg-accent-blue transition-colors" />
-                    <h4 className="text-[10px] font-mono text-text-400 uppercase tracking-[0.2em]">Secure Line (WhatsApp)</h4>
+                    <p className="text-[10px] font-mono text-text-400 uppercase tracking-[0.2em]">Secure Line (WhatsApp)</p>
                   </div>
                   <a href="https://wa.me/919544915412" target="_blank" rel="noopener noreferrer" className="text-2xl md:text-3xl font-light text-text-200 hover:text-text-100 transition-colors block hover-target">
                     Get in Direct
@@ -94,7 +94,7 @@ export default function Contact() {
               <div className="flex flex-col gap-8 pl-12">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-2 h-2 bg-text-400" />
-                  <h4 className="text-[10px] font-mono text-text-400 uppercase tracking-[0.2em]">Data Nodes</h4>
+                  <p className="text-[10px] font-mono text-text-400 uppercase tracking-[0.2em]">Data Nodes</p>
                 </div>
                 <div className="flex flex-col gap-6">
                   {socials.map((link) => (
@@ -111,7 +111,7 @@ export default function Contact() {
         </div>
 
         <footer className="w-full mt-32 relative flex flex-col items-center border-t border-border-light pt-8">
-          <h1 className="heading-display text-[15vw] md:text-[22vw] leading-[0.72] text-text-100 opacity-[0.03] select-none pointer-events-none text-center tracking-tighter">AMEENN</h1>
+          <div className="heading-display text-[15vw] md:text-[22vw] leading-[0.72] text-text-100 opacity-[0.03] select-none pointer-events-none text-center tracking-tighter">AMEENN</div>
           <div className="absolute bottom-8 w-full px-12 flex justify-between items-center text-[10px] font-mono text-text-400 tracking-[0.2em] uppercase">
             <div className="flex gap-8">
               <span>SYS.VER: 1.0.0</span>

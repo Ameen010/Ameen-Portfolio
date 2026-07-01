@@ -86,7 +86,8 @@ export default function Hero() {
           {/* Name */}
           <div ref={textRef} className="w-full">
             <h1 className="heading-display text-[18vw] sm:text-[14vw] md:text-[12vw] font-bold uppercase text-text-100 flex flex-col leading-[0.88]">
-              <div className="overflow-visible flex items-center gap-4 md:gap-8">
+              <span className="sr-only">Ameenn Noushad — Odoo Techno-Functional Developer & Portfolio</span>
+              <div aria-hidden="true" className="overflow-visible flex items-center gap-4 md:gap-8">
                 <span className="hidden md:block w-32 h-[2px] bg-text-400 tech-line" />
                 <div>
                   {"AMEENN".split('').map((char, i) => (
@@ -94,7 +95,7 @@ export default function Hero() {
                   ))}
                 </div>
               </div>
-              <div className="overflow-visible text-text-300 md:ml-[15vw]">
+              <div aria-hidden="true" className="overflow-visible text-text-300 md:ml-[15vw]">
                 {"NOUSHAD".split('').map((char, i) => (
                   <span key={`l-${i}`} className="reveal-char inline-block origin-bottom">{char}</span>
                 ))}

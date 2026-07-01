@@ -32,7 +32,7 @@ export default function Skills() {
         <span className="section-caption">Capabilities</span>
         {skillCategories.map((cat, idx) => (
           <div key={idx} className="flex flex-col gap-3">
-            <h3 className="font-mono text-[9px] tracking-[0.25em] uppercase text-text-400">// {cat.title}</h3>
+            <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-text-400">{"// "}{cat.title}</p>
             <div className="flex flex-wrap gap-2">
               {cat.skills.map((sk) => (
                 <span key={sk} className="px-3 py-1 border border-border-light text-text-300 text-[10px] font-mono tracking-wide">{sk}</span>
@@ -51,7 +51,7 @@ export default function Skills() {
           <div className="col-span-9 flex flex-col gap-24">
             {skillCategories.map((category, idx) => (
               <div key={idx} className="flex flex-col gap-8">
-                <h3 className="text-sm font-mono text-text-400 tracking-widest uppercase skill-reveal">// {category.title}</h3>
+                <p className="text-sm font-mono text-text-400 tracking-widest uppercase skill-reveal">{"// "}{category.title}</p>
                 <div className="flex flex-wrap gap-x-12 gap-y-6">
                   {category.skills.map((skill) => (
                     <div key={skill} className="skill-reveal text-4xl md:text-5xl lg:text-6xl font-light text-text-300 hover:text-text-100 transition-colors duration-500 cursor-default heading-display">

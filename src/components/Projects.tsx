@@ -30,7 +30,7 @@ export default function Projects() {
                 <span className="w-6 h-[1px] bg-border-light" />
                 <span>{project.id}</span>
               </div>
-              <h3 className="heading-display text-3xl text-text-200">{project.title}</h3>
+              <p className="heading-display text-3xl text-text-200">{project.title}</p>
               <div className="flex items-center justify-between mt-1">
                 <span className="font-mono text-[10px] text-text-400 tracking-widest uppercase">{project.category}</span>
                 <span className="border border-border-light px-2 py-1 font-mono text-[10px] text-text-400">{project.year}</span>
@@ -40,7 +40,7 @@ export default function Projects() {
         </div>
         <div className="mt-4 p-4 border border-border-light/50 bg-bg-elevated/30">
           <p className="font-mono text-[10px] text-text-400 tracking-widest uppercase leading-relaxed">
-            // More detailed case studies &amp; project documentation available on request.
+            {"// More detailed case studies & project documentation available on request."}
           </p>
         </div>
       </div>
