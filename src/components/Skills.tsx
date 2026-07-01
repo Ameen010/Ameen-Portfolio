@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useEffect } from 'react';
+import { useMobile } from '@/hooks/useMobile';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,6 +14,7 @@ const skillCategories = [
 ];
 
 export default function Skills() {
+  const isMobile = useMobile();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,43 +29,45 @@ export default function Skills() {
   return (
     <section id="capabilities" ref={containerRef} className="snap-section relative w-full bg-bg-surface z-20 border-t border-border-light flex flex-col" style={{ minHeight: '100svh' }}>
 
-      {/* ── MOBILE: compact pill grid ── */}
-      <div className="md:hidden flex flex-col w-full h-full overflow-y-auto px-5 py-8 gap-8">
-        <span className="section-caption">Capabilities</span>
-        {skillCategories.map((cat, idx) => (
-          <div key={idx} className="flex flex-col gap-3">
-            <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-text-400">{"// "}{cat.title}</p>
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map((sk) => (
-                <span key={sk} className="px-3 py-1 border border-border-light text-text-300 text-[10px] font-mono tracking-wide">{sk}</span>
+      {isMobile ? (
+        /* ── MOBILE: compact pill grid ── */
+        <div className="md:hidden flex flex-col w-full h-full overflow-y-auto px-5 py-8 gap-8">
+          <span className="section-caption">Capabilities</span>
+          {skillCategories.map((cat, idx) => (
+            <div key={idx} className="flex flex-col gap-3">
+              <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-text-400">{"// "}{cat.title}</p>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((sk) => (
+                  <span key={sk} className="px-3 py-1 border border-border-light text-text-300 text-[10px] font-mono tracking-wide">{sk}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        /* ── DESKTOP: large text cloud ── */
+        <div className="hidden md:block w-full py-48">
+          <div className="max-w-[1600px] mx-auto px-12 w-full grid grid-cols-12 gap-8 items-start">
+            <div className="col-span-3">
+              <span className="section-caption sticky top-32 skill-reveal">Capabilities</span>
+            </div>
+            <div className="col-span-9 flex flex-col gap-24">
+              {skillCategories.map((category, idx) => (
+                <div key={idx} className="flex flex-col gap-8">
+                  <p className="text-sm font-mono text-text-400 tracking-widest uppercase skill-reveal">{"// "}{category.title}</p>
+                  <div className="flex flex-wrap gap-x-12 gap-y-6">
+                    {category.skills.map((skill) => (
+                      <div key={skill} className="skill-reveal text-4xl md:text-5xl lg:text-6xl font-light text-text-300 hover:text-text-100 transition-colors duration-500 cursor-default heading-display">
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* ── DESKTOP: large text cloud ── */}
-      <div className="hidden md:block w-full py-48">
-        <div className="max-w-[1600px] mx-auto px-12 w-full grid grid-cols-12 gap-8 items-start">
-          <div className="col-span-3">
-            <span className="section-caption sticky top-32 skill-reveal">Capabilities</span>
-          </div>
-          <div className="col-span-9 flex flex-col gap-24">
-            {skillCategories.map((category, idx) => (
-              <div key={idx} className="flex flex-col gap-8">
-                <p className="text-sm font-mono text-text-400 tracking-widest uppercase skill-reveal">{"// "}{category.title}</p>
-                <div className="flex flex-wrap gap-x-12 gap-y-6">
-                  {category.skills.map((skill) => (
-                    <div key={skill} className="skill-reveal text-4xl md:text-5xl lg:text-6xl font-light text-text-300 hover:text-text-100 transition-colors duration-500 cursor-default heading-display">
-                      {skill}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </div>
+      )}
 
     </section>
   );

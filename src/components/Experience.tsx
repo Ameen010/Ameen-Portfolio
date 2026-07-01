@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import { useMobile } from '@/hooks/useMobile';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -20,6 +21,7 @@ const statusStyle: Record<string, string> = {
 };
 
 export default function Experience() {
+  const isMobile = useMobile();
   const listRef = useRef<HTMLDivElement>(null);
   const [openId, setOpenId] = useState<string | null>(null);
 
@@ -39,84 +41,86 @@ export default function Experience() {
       <div className="absolute inset-0 pointer-events-none opacity-[0.015] hidden md:block"
         style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
 
-      {/* ── MOBILE accordion ── */}
-      <div className="md:hidden flex flex-col w-full h-full overflow-y-auto">
-        <div className="px-5 pt-8 pb-4 flex items-center justify-between">
-          <span className="section-caption">Experience</span>
-          <span className="font-mono text-[9px] text-text-400 tracking-widest">TAP TO EXPAND</span>
-        </div>
-        <div className="flex flex-col divide-y divide-border-light">
-          {experiences.map((exp) => {
-            const isOpen = openId === exp.id;
-            return (
-              <div key={exp.id} className="flex flex-col">
-                <button
-                  onClick={() => toggle(exp.id)}
-                  className="flex items-center justify-between px-5 py-4 text-left w-full group"
-                >
-                  <div className="flex flex-col gap-1 flex-1 min-w-0">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-[9px] text-text-400 tracking-[0.2em]">{exp.id}</span>
-                      <span className={`font-mono text-[8px] tracking-widest uppercase px-2 py-0.5 border ${statusStyle[exp.status]}`}>{exp.status}</span>
+      {isMobile ? (
+        /* ── MOBILE accordion ── */
+        <div className="md:hidden flex flex-col w-full h-full overflow-y-auto">
+          <div className="px-5 pt-8 pb-4 flex items-center justify-between">
+            <span className="section-caption">Experience</span>
+            <span className="font-mono text-[9px] text-text-400 tracking-widest">TAP TO EXPAND</span>
+          </div>
+          <div className="flex flex-col divide-y divide-border-light">
+            {experiences.map((exp) => {
+              const isOpen = openId === exp.id;
+              return (
+                <div key={exp.id} className="flex flex-col">
+                  <button
+                    onClick={() => toggle(exp.id)}
+                    className="flex items-center justify-between px-5 py-4 text-left w-full group"
+                  >
+                    <div className="flex flex-col gap-1 flex-1 min-w-0">
+                      <div className="flex items-center gap-3">
+                        <span className="font-mono text-[9px] text-text-400 tracking-[0.2em]">{exp.id}</span>
+                        <span className={`font-mono text-[8px] tracking-widest uppercase px-2 py-0.5 border ${statusStyle[exp.status]}`}>{exp.status}</span>
+                      </div>
+                      <span className="text-text-100 text-sm font-light heading-display truncate">{exp.role}</span>
                     </div>
-                    <span className="text-text-100 text-sm font-light heading-display truncate">{exp.role}</span>
-                  </div>
-                  <span className="font-mono text-accent-cyan text-xs ml-3 flex-shrink-0 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>+</span>
-                </button>
+                    <span className="font-mono text-accent-cyan text-xs ml-3 flex-shrink-0 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>+</span>
+                  </button>
 
-                {/* Expandable content */}
-                <div
-                  className="overflow-hidden transition-all duration-500 ease-in-out"
-                  style={{ maxHeight: isOpen ? '500px' : '0px', opacity: isOpen ? 1 : 0 }}
-                >
-                  <div className="px-5 pb-6 flex flex-col gap-3 border-l-2 border-accent-cyan/30 ml-5">
-                    <p className="font-mono text-[10px] text-text-400 tracking-widest uppercase">{exp.company} · {exp.period}</p>
-                    {exp.points.map((pt, i) => (
-                      <p key={i} className="text-text-300 text-xs leading-relaxed font-light">{pt}</p>
-                    ))}
+                  {/* Expandable content */}
+                  <div
+                    className="overflow-hidden transition-all duration-500 ease-in-out"
+                    style={{ maxHeight: isOpen ? '500px' : '0px', opacity: isOpen ? 1 : 0 }}
+                  >
+                    <div className="px-5 pb-6 flex flex-col gap-3 border-l-2 border-accent-cyan/30 ml-5">
+                      <p className="font-mono text-[10px] text-text-400 tracking-widest uppercase">{exp.company} · {exp.period}</p>
+                      {exp.points.map((pt, i) => (
+                        <p key={i} className="text-text-300 text-xs leading-relaxed font-light">{pt}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* ── DESKTOP list ── */}
-      <div className="hidden md:block w-full py-48 relative z-10">
-        <div className="max-w-[1600px] mx-auto px-12 w-full grid grid-cols-12 gap-8 items-start">
-          <div className="col-span-3">
-            <span className="section-caption sticky top-32">Experience</span>
-          </div>
-          <div ref={listRef} className="col-span-9 flex flex-col border-l border-border-light pl-12">
-            {experiences.map((exp, index) => (
-              <div key={index} className={`exp-item group flex flex-col lg:flex-row justify-between py-16 relative ${index !== 0 ? 'border-t border-border-light' : ''}`}>
-                <div className="absolute -left-[53px] top-20 w-3 h-3 border border-border-light bg-bg-base group-hover:bg-text-100 transition-colors duration-500 hidden md:block" />
-                <div className="flex-1 pr-8">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="font-mono text-[10px] text-text-400 tracking-[0.2em]">{exp.id}</span>
-                    <div className="h-[1px] w-12 bg-border-light" />
-                  </div>
-                  <h3 className="text-3xl md:text-4xl font-normal text-text-100 mb-2 heading-display group-hover:translate-x-4 transition-transform duration-500">{exp.role}</h3>
-                  <div className="text-xl text-text-300 font-light mb-8 flex items-center gap-4">
-                    {exp.company}<span className="inline-block w-2 h-2 rounded-full bg-accent-cyan opacity-50" />
-                  </div>
-                  <div className="space-y-4 border-l border-border-light pl-6 relative">
-                    <div className="absolute top-0 left-0 w-[2px] h-0 bg-text-400 group-hover:h-full transition-all duration-700" />
-                    {exp.points.map((pt, i) => (
-                      <p key={i} className="text-text-300 text-sm font-light max-w-xl leading-relaxed">{pt}</p>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-8 lg:mt-0 lg:text-right flex flex-col items-start lg:items-end justify-start">
-                  <span className="font-mono text-xs text-text-400 tracking-widest uppercase border border-border-light px-4 py-2">{exp.period}</span>
-                  <span className={`mt-4 font-mono text-[10px] tracking-widest uppercase px-3 py-1 border ${statusStyle[exp.status]}`}>STATUS: {exp.status}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
-      </div>
+      ) : (
+        /* ── DESKTOP list ── */
+        <div className="hidden md:block w-full py-48 relative z-10">
+          <div className="max-w-[1600px] mx-auto px-12 w-full grid grid-cols-12 gap-8 items-start">
+            <div className="col-span-3">
+              <span className="section-caption sticky top-32">Experience</span>
+            </div>
+            <div ref={listRef} className="col-span-9 flex flex-col border-l border-border-light pl-12">
+              {experiences.map((exp, index) => (
+                <div key={index} className={`exp-item group flex flex-col lg:flex-row justify-between py-16 relative ${index !== 0 ? 'border-t border-border-light' : ''}`}>
+                  <div className="absolute -left-[53px] top-20 w-3 h-3 border border-border-light bg-bg-base group-hover:bg-text-100 transition-colors duration-500 hidden md:block" />
+                  <div className="flex-1 pr-8">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="font-mono text-[10px] text-text-400 tracking-[0.2em]">{exp.id}</span>
+                      <div className="h-[1px] w-12 bg-border-light" />
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-normal text-text-100 mb-2 heading-display group-hover:translate-x-4 transition-transform duration-500">{exp.role}</h3>
+                    <div className="text-xl text-text-300 font-light mb-8 flex items-center gap-4">
+                      {exp.company}<span className="inline-block w-2 h-2 rounded-full bg-accent-cyan opacity-50" />
+                    </div>
+                    <div className="space-y-4 border-l border-border-light pl-6 relative">
+                      <div className="absolute top-0 left-0 w-[2px] h-0 bg-text-400 group-hover:h-full transition-all duration-700" />
+                      {exp.points.map((pt, i) => (
+                        <p key={i} className="text-text-300 text-sm font-light max-w-xl leading-relaxed">{pt}</p>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-8 lg:mt-0 lg:text-right flex flex-col items-start lg:items-end justify-start">
+                    <span className="font-mono text-xs text-text-400 tracking-widest uppercase border border-border-light px-4 py-2">{exp.period}</span>
+                    <span className={`mt-4 font-mono text-[10px] tracking-widest uppercase px-3 py-1 border ${statusStyle[exp.status]}`}>STATUS: {exp.status}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

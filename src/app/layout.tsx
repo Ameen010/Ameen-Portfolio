@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     title: "AMEENN — Odoo Techno-Functional Developer | ERP Specialist",
     description: "Premium portfolio of Ameen Noushad — Odoo Techno-Functional Developer, ERP Specialist & Full-Stack Developer.",
