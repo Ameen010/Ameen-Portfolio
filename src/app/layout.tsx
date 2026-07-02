@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ameen-portfolio.pages.dev'),
-  title: "AMEENN — Odoo Techno-Functional Developer | ERP Specialist",
-  description: "Premium portfolio of Ameen Noushad — Odoo Techno-Functional Developer, ERP Specialist & Full-Stack Developer. Building intelligent enterprise solutions from Tiny ERP to Odoo 19.",
+  title: "Ameen Noushad | Odoo Techno-Functional Developer & ERP Expert",
+  description: "Portfolio of Ameen Noushad, an expert Odoo Techno-Functional & Full-Stack Developer. Delivering enterprise ERP solutions from Tiny ERP to Odoo 19.",
   keywords: "Ameen Noushad, Odoo Developer, ERP specialist, Odoo techno functional developer, AI Solutions Architect, Full Stack Developer, Python Developer, Kerala",
   alternates: {
     canonical: '/',
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     apple: '/favicon.ico',
   },
   openGraph: {
-    title: "AMEENN — Odoo Techno-Functional Developer | ERP Specialist",
-    description: "Premium portfolio of Ameen Noushad — Odoo Techno-Functional Developer, ERP Specialist & Full-Stack Developer.",
+    title: "Ameen Noushad | Odoo Techno-Functional Developer & ERP Expert",
+    description: "Portfolio of Ameen Noushad, an expert Odoo Techno-Functional & Full-Stack Developer. Delivering enterprise ERP solutions from Tiny ERP to Odoo 19.",
     url: 'https://ameen-portfolio.pages.dev',
     siteName: 'Ameen Noushad Portfolio',
     type: "website",
