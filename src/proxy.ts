@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export const runtime = 'experimental-edge';
-
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const host = request.headers.get('host');
   
+  // Safe redirect: Redirect www to non-www only if host explicitly starts with www.
+  // Warning: If you also set a redirect in Cloudflare from non-www to www, this will cause a redirect loop.
+  // We recommend using Cloudflare Page Rules/Redirect Rules instead of server-side redirects for DNS mapping.
   if (host && host.startsWith('www.')) {
     const newHost = host.replace(/^www\./, '');
     const redirectUrl = new URL(request.nextUrl.pathname + request.nextUrl.search, `https://${newHost}`);
